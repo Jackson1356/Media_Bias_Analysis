@@ -36,7 +36,7 @@ def get_wayback_url(image_url):
 
 def main(args):
     credentials = service_account.Credentials.from_service_account_file(
-    "./sylvan-airship-406701-7556ece80fd0.json")
+    "./sylvan-airship-XXX.json")
     client = storage.Client(credentials=credentials)
     bucket = client.get_bucket('full_images_2024')
     
