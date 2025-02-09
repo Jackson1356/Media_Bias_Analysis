@@ -33,7 +33,7 @@ def get_wayback_url(image_url):
     return None
 
 def main():
-    credentials = service_account.Credentials.from_service_account_file("./sylvan-airship-406701-7556ece80fd0.json")
+    credentials = service_account.Credentials.from_service_account_file("./sylvan-airship-XXX.json")
     client = storage.Client(credentials=credentials)
     bucket = client.get_bucket('full_images_2024')
 
@@ -78,7 +78,7 @@ def main():
                 np_image = np.array(image)  
                 
                 content.seek(0)
-                image_blob = bucket.blob(f"celebrity_images2/{name}/{img_name}.{img_format}")
+                image_blob = bucket.blob(f"celebrity_images/{name}/{img_name}.{img_format}")
                 image_blob.upload_from_file(content)
                 
                 df.at[index, 'downloaded'] = 1
