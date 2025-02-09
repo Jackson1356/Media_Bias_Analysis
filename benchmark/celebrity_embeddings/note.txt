@@ -1,0 +1,2 @@
+These 12 pickle files contain the embeddings of 270 celebrities generted under different combinations of 3 backend models, 2 face detection models and 2 alignment modes.
+The embeddings are the average over 10 embeddings of each person's 10 different front-oriented high resolution images.
