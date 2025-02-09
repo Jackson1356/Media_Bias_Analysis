@@ -20,29 +20,12 @@ import json
 import re
 
 def main():
-    credentials = service_account.Credentials.from_service_account_file("./sylvan-airship-406701-7556ece80fd0.json")
+    credentials = service_account.Credentials.from_service_account_file("./sylvan-airship-XXX.json")
     client = storage.Client(credentials=credentials)
     bucket = client.get_bucket('full_images_2024')
 
-    # with open('name_tokens.pkl', 'rb') as file:
-    #     celebrities = pickle.load(file)
-    # celebrity_sets = {celeb: set(names) for celeb, names in celebrities.items()}
-
-    celebrity_names = ['Young Kim', 'Ozuna', 'Bob Corker', 'Tony Romo', 'Jeanine Pirro', 'Tom Perez', 'Vanessa Bryant', 'Van Jones', 
-                       'Russell Wilson', 'Jack Ma', 'Shohei Ohtani', 'Aung San Suu Kyi', 'George Soros', 'Ralph Northam', 'Bubba Wallace', 
-                       'Carmelo Anthony', 'David Ortiz', 'Whoopi Goldberg', 'Lewis Hamilton', 'Lil Nas X', 'Masayoshi Son', 'Clarence Thomas', 
-                       'Katie Hill', 'Dak Prescott', 'Priyanka Chopra', 'Oprah Winfrey', 'Urban Meyer', 'Patrick Mahomes', 'Marco Rubio', 
-                       'Ro James', 'Lin-Manuel Miranda', 'Bryce Harper', 'Rihanna', 'Naomi Osaka', 'Roseanne Barr', 'Kayleigh McEnany', 
-                       'Andrew Yang', 'Satya Nadella', 'Conor McGregor', 'Nicki Minaj', 'Zach Braff', 'Kevin Durant', 'Alex Rodriguez', 
-                       'Nadia Murad', 'Trevor Noah', 'George Foreman', 'Ruth Bader Ginsburg', 'Neymar', 'Sam Elliott', 'Seema Verma', 
-                       'Robert Menendez', 'Jim Acosta', 'Nicole Malliotakis', 'Susan Rice', 'Rashida Tlaib', 'Ma Jun', 'Anthony Gonzalez', 
-                       'Chrissy Teigen', 'Venus Williams', 'Camilo', 'Jennifer Aniston', 'Lil Pump', 'Caitlyn Jenner', 'Xi Jinping', 
-                       'Demi Lovato', 'Rosie Perez', 'J. Cole', 'Mitch Landrieu', 'Mike Garcia', 'Maya Rudolph', 'Kevin Cramer', 'Master P', 
-                       'Chloé Zhao', 'Henry Cuellar', 'Rachel Weisz', 'Linda Ronstadt', 'Wanda Sykes', 'Luis Fonsi', 'Breonna Taylor', 
-                       'Tayshia Adams', 'Smokey Robinson', 'Andy Kim', 'Ruth B', 'Fareed Zakaria', 'Darren Criss', 'Angela Davis', 
-                       'Omar al-Bashir', 'Jesse Williams', 'Mariah Carey', 'Yalitza Aparicio', 'Anya Taylor-Joy', 'Jodie Foster', 
-                       'Colin Kaepernick', 'Cardi B', 'Tan France', 'Tessa Thompson', 'Selena Gomez', 'Leana Wen', 'Oscar Isaac', 
-                       'Carrie Ann Inaba', 'Malcolm Gladwell', 'Simone Biles', 'Tiger Woods']
+    with open('./stratified_sample_names.pkl', 'rb') as f:
+        celebrity_names = pickle.load(f)
     
     name_count = {celebrity: 0 for celebrity in celebrity_names}
     years = ['2017', '2018', '2019', '2020', '2021']
